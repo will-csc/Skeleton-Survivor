@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://ovnoigy4hwyk"]
+
+[ext_resource type="Script" uid="uid://bsxgv4wjvves0" path="res://scripts/gun.gd" id="1_u5n5n"]
+[ext_resource type="PackedScene" uid="uid://cwi75lfyjwbgr" path="res://prefabs/bullet.tscn" id="2_s1yg4"]
+[ext_resource type="Texture2D" uid="uid://c1eqdbgmwecoa" path="res://sprites/Guns.png" id="3_1ix1d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5n5n"]
+size = Vector2(12, 8)
+
+[node name="minigun" type="Node2D"]
+script = ExtResource("1_u5n5n")
+bullet_scene = ExtResource("2_s1yg4")
+projectiles_per_shot = 5
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(14, 0)
+texture = ExtResource("3_1ix1d")
+region_enabled = true
+region_rect = Rect2(55, 4, 13, 9)
+
+[node name="Bullet_Marker" type="Marker2D" parent="Sprite2D"]
+position = Vector2(6, -2)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(14, 0)
+shape = SubResource("RectangleShape2D_u5n5n")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
