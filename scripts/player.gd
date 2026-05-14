@@ -73,7 +73,7 @@ func die():
 	is_alive = false
 	anim_sprite.play("death")
 	$Area2D.queue_free()
-	await  get_tree().create_timer(3.0).timeout
-	get_tree().reload_current_scene()
+	await get_tree().create_timer(1.0).timeout
+	get_tree().current_scene.show_game_over()
 	
 	pass

@@ -17,9 +17,11 @@ const SPEED_BONUS_PER_20_KILLS = 10.0
 const MAX_SPEED = 35
 
 @onready var sprite = $AnimatedSprite2D
+@onready var animation_player = $AnimationPlayer
 
 var speed = 15
 var velocity = Vector2.ZERO
+@export var knockback_force = 80.0
 @export var shots_to_die = 3
 @export_range(0.0, 1.0, 0.01) var drop_chance = 0.05
 @export var drop_scenes: Array[PackedScene] = []
@@ -27,6 +29,7 @@ var velocity = Vector2.ZERO
 var hits_taken = 0
 var is_alive = true
 var rng := RandomNumberGenerator.new()
+
 
 func _ready() -> void:
 	rng.randomize()
@@ -75,11 +78,15 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullets"):
 		area.queue_free()
 		if bool(area.get("instant_kill")):
+			animation_player.play("hit")
 			die()
 			return
+			
+		var knockback_direction = area.global_position.direction_to(global_position)
+		velocity += knockback_direction * knockback_force
 		
 		hits_taken += 1
-		
+		animation_player.play("hit")
 		if hits_taken >= shots_to_die:
 			die()
 		return

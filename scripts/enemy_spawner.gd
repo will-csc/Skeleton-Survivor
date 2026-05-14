@@ -11,6 +11,7 @@ const ENEMIES_PER_WAVE_STEP = 5
 @export var min_spawn_distance = 140.0
 @export var max_spawn_distance = 220.0
 
+var game_started = false
 var rng := RandomNumberGenerator.new()
 var spawn_timer: Timer
 var last_spawn_bonus_steps = 0
@@ -23,10 +24,14 @@ func _ready() -> void:
 	add_child(spawn_timer)
 	spawn_timer.start()
 	
-	for _i in range(initial_spawn_count):
-		_try_spawn_enemy()
+	# for _i in range(initial_spawn_count):
+	# 	_try_spawn_enemy()
 
 func _process(_delta: float) -> void:
+	
+	if not game_started:
+		return
+	
 	var current_bonus_steps = get_spawn_bonus_steps()
 	if current_bonus_steps <= last_spawn_bonus_steps:
 		return
@@ -38,6 +43,11 @@ func _process(_delta: float) -> void:
 		_try_spawn_enemy()
 
 func _try_spawn_enemy() -> void:
+	
+
+	if not game_started:
+		return
+	
 	if enemy_scene == null:
 		return
 	
