@@ -10,7 +10,8 @@ size = Vector2(12, 8)
 [node name="minigun" type="Node2D"]
 script = ExtResource("1_u5n5n")
 bullet_scene = ExtResource("2_s1yg4")
-projectiles_per_shot = 5
+fire_time = 0.12
+max_hold_shots = 3
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

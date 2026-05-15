@@ -10,7 +10,9 @@ size = Vector2(16, 8)
 [node name="airbow" type="Node2D"]
 script = ExtResource("1_iru5o")
 bullet_scene = ExtResource("2_7jni0")
+fire_time = 0.1
 bullet_speed = 400.0
+max_hold_shots = 5
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

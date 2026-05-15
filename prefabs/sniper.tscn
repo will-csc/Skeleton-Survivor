@@ -8,11 +8,12 @@
 size = Vector2(22, 6)
 
 [node name="sniper" type="Node2D"]
+position = Vector2(21, -4)
 script = ExtResource("1_soxn1")
 bullet_scene = ExtResource("2_4ovfl")
-fire_time = 3.0
-bullet_speed = 400.0
 instant_kill = true
+fire_time = 1.5
+bullet_speed = 400.0
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -7,12 +7,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iru5o"]
 size = Vector2(23, 8)
 
-[node name="pistol" type="Node2D"]
+[node name="legendary_minigun" type="Node2D"]
 script = ExtResource("1_4v0cx")
 bullet_scene = ExtResource("2_hbgei")
-projectiles_per_shot = 10
-spread_angle_degrees = 180.0
-randomize_spread = true
+fire_time = 0.06
+max_hold_shots = 20
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

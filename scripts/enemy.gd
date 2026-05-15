@@ -14,7 +14,7 @@ const LEGENDARY_BASE_CHANCE = 0.001
 const LEGENDARY_CHANCE_PER_10_KILLS = 0.005
 const MAX_LEGENDARY_CHANCE = 0.10
 const SPEED_BONUS_PER_20_KILLS = 10.0
-const MAX_SPEED = 35
+const MAX_SPEED = 25
 
 @onready var sprite = $AnimatedSprite2D
 @onready var animation_player = $AnimationPlayer

@@ -20,8 +20,12 @@ var actual_state = State.GROUND
 @export var bullet_speed = 200.0
 @export var damage = 10.0
 @export var bullet_size = 1.0
+@export var max_hold_shots = 0
+@export var hold_burst_cooldown = 0.0
 
 var can_shoot = true
+var hold_shots_fired = 0
+var hold_cooldown_active = false
 var drop_token = 0
 var rng := RandomNumberGenerator.new()
 
@@ -49,11 +53,26 @@ func aim():
 	pass
 	
 func shoot ():
+	if not Input.is_action_pressed("shoot"):
+		if not hold_cooldown_active:
+			hold_shots_fired = 0
+		return
 	
-	if Input.is_action_just_pressed("shoot") and bullet_scene and can_shoot:
+	if hold_cooldown_active:
+		return
+	
+	if max_hold_shots > 0 and hold_shots_fired >= max_hold_shots:
+		return
+	
+	if bullet_scene and can_shoot:
 		
 		can_shoot = false
-		$Timer.start(fire_time)
+		hold_shots_fired += 1
+		if hold_burst_cooldown > 0.0 and max_hold_shots > 0 and hold_shots_fired >= max_hold_shots:
+			hold_cooldown_active = true
+			$Timer.start(hold_burst_cooldown)
+		else:
+			$Timer.start(fire_time)
 		for projectile_index in range(projectiles_per_shot):
 			spawn_bullet(projectile_index)
 	
@@ -128,6 +147,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 
 
 func _on_timer_timeout() -> void:
+	if hold_cooldown_active:
+		hold_cooldown_active = false
+		hold_shots_fired = 0
 	
 	can_shoot = true
 	

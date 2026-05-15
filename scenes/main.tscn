@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ba5gjekp8xg5b"]
+[gd_scene load_steps=56 format=3 uid="uid://ba5gjekp8xg5b"]
 
 [ext_resource type="Texture2D" uid="uid://x2jy1ingrfay" path="res://textures/bg.png" id="1_choun"]
 [ext_resource type="Script" uid="uid://b86ybmapedrpn" path="res://scripts/main.gd" id="1_eb6dy"]
@@ -329,13 +329,13 @@ height = 22.0
 radius = 6.0
 height = 20.0
 
-[node name="Main" type="Node2D" unique_id=936288646]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_eb6dy")
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=436657604]
+[node name="Parallax2D" type="Parallax2D" parent="."]
 follow_viewport = false
 
-[node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=13336410]
+[node name="TextureRect" type="TextureRect" parent="Parallax2D"]
 offset_left = -2.0
 offset_top = 1.0
 offset_right = 320.0
@@ -343,36 +343,37 @@ offset_bottom = 179.0
 texture = ExtResource("1_choun")
 expand_mode = 1
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1199949282 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" parent="." groups=["Player"]]
 position = Vector2(220, 108)
 script = ExtResource("1_tefeu")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1498675152]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_bu4jf")
 animation = &"walk_down"
 autoplay = "idle"
 
-[node name="Hand" type="Node2D" parent="Player" unique_id=2095922974]
+[node name="Hand" type="Node2D" parent="Player"]
 position = Vector2(0, 4)
 
-[node name="Area2D" type="Area2D" parent="Player" unique_id=162842348]
+[node name="Area2D" type="Area2D" parent="Player"]
 position = Vector2(-232, -99)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D" unique_id=1362218455]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2(232, 98)
 shape = SubResource("CapsuleShape2D_choun")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1734897316]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, -1)
 shape = SubResource("CapsuleShape2D_85g3d")
 debug_color = Color(0.9384405, 0.20183295, 0.3795208, 0.41960785)
 
-[node name="EnemySpawner" type="Node2D" parent="." unique_id=281926027]
+[node name="EnemySpawner" type="Node2D" parent="."]
 script = ExtResource("2_0n05d")
 enemy_scene = ExtResource("10_choun")
 
-[node name="ScoreLabel" type="Label" parent="." unique_id=1375531597]
+[node name="ScoreLabel" type="Label" parent="."]
+texture_filter = 2
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 51.0
@@ -382,5 +383,5 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 10
 script = ExtResource("11_ya4ey")
 
-[node name="pistol" parent="." unique_id=1872362890 instance=ExtResource("1_tipki")]
+[node name="pistol" parent="." instance=ExtResource("1_tipki")]
 position = Vector2(274, 104)
