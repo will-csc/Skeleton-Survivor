@@ -2,6 +2,9 @@
 
 Jogo top-down survival feito em Godot, onde o jogador enfrenta ondas de inimigos, coleta armas derrubadas no mapa e tenta sobreviver o máximo possível.
 
+## OverView
+<img width="1915" height="1040" alt="image" src="https://github.com/user-attachments/assets/c2dceabd-11c9-41d7-ace5-1e0b8bd1a579" />
+
 ## Visão Geral
 
 - Movimento em arena com personagem controlado por teclado.
